@@ -54,4 +54,9 @@ public class EstudianteResource {
         this.estudianteService.eliminar(id);
     }
 
+    @GET
+    @Path("/buscarProv")
+    public List<Estudiante> buscarPorProvincia(@QueryParam("provincia") String provincia,@QueryParam("genero") String genero){
+        return this.estudianteService.buscarPorProvincia(provincia,genero);
+    }
 }
