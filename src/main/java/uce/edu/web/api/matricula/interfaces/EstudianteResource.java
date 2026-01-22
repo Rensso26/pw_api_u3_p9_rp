@@ -9,8 +9,6 @@ import uce.edu.web.api.matricula.domain.Estudiante;
 
 import java.util.List;
 
-import javax.print.attribute.standard.Media;
-
 @Path("/estudiantes")
 @Produces(MediaType.APPLICATION_JSON)
 public class EstudianteResource {
@@ -19,44 +17,45 @@ public class EstudianteResource {
     private EstudianteService estudianteService;
 
     @GET
-    @Path("/todos")
+    @Path("")
     public List<Estudiante> listAll() {
         return estudianteService.ListAll();
     }
 
     @GET
-    @Path("/consultarPorId/{id}")
+    @Path("/{id}")
     public  Estudiante consultarPorId(@PathParam("id") Integer id) {
         return this.estudianteService.consultarPorId(id);
     }
 
     @POST
-    @Path("/crear")
+    @Path("")
     public void guardar(Estudiante estu) {
         this.estudianteService.crear(estu);
     }
 
     @PUT
-    @Path("/actualizar/{id}")
+    @Path("/{id}")
     public void actualizar(@PathParam("id") Integer id, Estudiante estu){
         this.estudianteService.actualizar(id, estu);
     }
 
     @PATCH
-    @Path("/azctualizarParcial/{id}")
+    @Path("/{id}")
     public void actualuzarParcial(@PathParam("id") Integer id, Estudiante estu){
         this.estudianteService.actualizarParcial(id,estu);
     }
 
     @DELETE
-    @Path("/borrar/{id}")
+    @Path("/{id}")
     public void eliminar(@PathParam("id") Integer id) {
         this.estudianteService.eliminar(id);
     }
 
     @GET
-    @Path("/buscarProv")
+    @Path("/provincia/genero")
     public List<Estudiante> buscarPorProvincia(@QueryParam("provincia") String provincia,@QueryParam("genero") String genero){
         return this.estudianteService.buscarPorProvincia(provincia,genero);
+
     }
 }
