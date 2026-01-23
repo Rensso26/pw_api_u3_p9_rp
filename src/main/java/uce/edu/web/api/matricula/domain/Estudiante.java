@@ -2,9 +2,11 @@ package uce.edu.web.api.matricula.domain;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 import jakarta.persistence.*;
+import jakarta.xml.bind.annotation.XmlRootElement;
 
 import java.time.LocalDateTime;
 
+@XmlRootElement
 @Entity
 @Table(name = "Estudiante")
 @SequenceGenerator(name = "estudiante_seq", sequenceName = "estudiante-secuencia", allocationSize = 1)

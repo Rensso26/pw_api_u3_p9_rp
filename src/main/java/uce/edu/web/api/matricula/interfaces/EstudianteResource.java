@@ -19,12 +19,14 @@ public class EstudianteResource {
 
     @GET
     @Path("")
+    @Produces(MediaType.APPLICATION_JSON)
     public List<Estudiante> listAll() {
         return estudianteService.ListAll();
     }
 
     @GET
     @Path("/{id}")
+    @Produces(MediaType.APPLICATION_XML)
     public  Estudiante consultarPorId(@PathParam("id") Integer id) {
         return this.estudianteService.consultarPorId(id);
     }
@@ -57,6 +59,7 @@ public class EstudianteResource {
 
     @GET
     @Path("/provincia/genero")
+    @Produces(MediaType.APPLICATION_XML)
     public List<Estudiante> buscarPorProvincia(@QueryParam("provincia") String provincia,@QueryParam("genero") String genero){
         return this.estudianteService.buscarPorProvincia(provincia,genero);
 
