@@ -26,7 +26,6 @@ public class EstudianteResource {
 
     @GET
     @Path("/{id}")
-    @Produces(MediaType.APPLICATION_XML)
     public  Estudiante consultarPorId(@PathParam("id") Integer id) {
         return this.estudianteService.consultarPorId(id);
     }

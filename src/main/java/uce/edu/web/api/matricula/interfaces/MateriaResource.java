@@ -3,6 +3,7 @@ package uce.edu.web.api.matricula.interfaces;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Response;
 import uce.edu.web.api.matricula.application.MateriaService;
 import uce.edu.web.api.matricula.domain.Materia;
 
@@ -16,50 +17,66 @@ public class MateriaResource {
 
     @GET
     @Path("")
-    public List<Materia> todos() {
-        return materiaService.ListAll();
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response todos() {
+        List<Materia> lista = materiaService.ListAll();
+        return Response.status(225).entity(lista).build() ;
     }
 
     @GET
     @Path("/{id}")
-    public Materia consultarPorId(@PathParam("id") long id) {
-        return this.materiaService.consultarPorId(id);
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response consultarPorId(@PathParam("id") long id) {
+        Materia materia = this.materiaService.consultarPorId(id);
+        return Response.status(225).entity(materia).build() ;
+
     }
 
     @POST
     @Path("")
-    public void guardar(Materia materia) {
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response guardar(Materia materia) {
         this.materiaService.crear(materia);
-
+        return Response.status(Response.Status.CREATED).entity(materia).build();
     }
 
     @PUT
     @Path("/{id}")
-    public void actualizar(@PathParam("id") Long id, Materia materia) {
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response actualizar(@PathParam("id") Long id, Materia materia) {
         this.materiaService.actualizar(materia, id);
+        return Response.status(Response.Status.ACCEPTED).entity(materia).build();
     }
 
     @PATCH
     @Path("/{id}")
-    public void actualizarParcial(@PathParam("id") Long id, Materia materia) {
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response actualizarParcial(@PathParam("id") Long id, Materia materia) {
         this.materiaService.actualuzarParcial(id, materia);
+        return Response.status(Response.Status.ACCEPTED).entity(materia).build();
     }
 
     @DELETE
     @Path("/{id}")
-    public void borrar(@PathParam("id") Long id) {
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response borrar(@PathParam("id") Long id) {
         this.materiaService.eliminar(id);
+        return Response.status(226).entity(null).build();
     }
 
     @GET
     @Path("/buscarcod/{cod}")
-    public Materia buscarCod(@PathParam("cod") String cod) {
-        return this.materiaService.buscarPorCod(cod);
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response buscarCod(@PathParam("cod") String cod) {
+        Materia materia = this.materiaService.buscarPorCod(cod);
+        return Response.status(227).entity(materia).build();
     }
 
     @PATCH
     @Path("/actualizarProf/{id}")
-    public void actualizarProf(@PathParam("id") Long id, String prof) {
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response actualizarProf(@PathParam("id") Long id, String prof) {
         materiaService.actualizarProf(prof, id);
+        return Response.status(229).entity(prof).build();
     }
 }
