@@ -1,10 +1,12 @@
 package uce.edu.web.api.matricula.domain;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.xml.bind.annotation.XmlRootElement;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @XmlRootElement
 @Entity
@@ -21,4 +23,8 @@ public class Estudiante extends PanacheEntityBase {
     public String provincia;
     public String genero;
 
+    @OneToMany(mappedBy = "estudiante", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonIgnore
+
+    public List<Hijo> hijos;
 }
