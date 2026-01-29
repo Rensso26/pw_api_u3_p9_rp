@@ -69,7 +69,7 @@ public class EstudianteService {
         return list;
     }
 
-    private EstudianteRepresentation mapperToER(Estudiante est){
+    public EstudianteRepresentation mapperToER(Estudiante est){
         EstudianteRepresentation estuR =new EstudianteRepresentation();
         estuR.id = est.id;
         estuR.nombre = est.nombre;
@@ -80,7 +80,7 @@ public class EstudianteService {
         return estuR;
     }
 
-    private Estudiante mapperToEstudiante(EstudianteRepresentation est){
+    public Estudiante mapperToEstudiante(EstudianteRepresentation est){
         Estudiante estuR =new Estudiante();
         estuR.id = est.id;
         estuR.nombre = est.nombre;
