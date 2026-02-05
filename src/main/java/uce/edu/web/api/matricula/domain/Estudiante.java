@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.xml.bind.annotation.XmlRootElement;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 
 @XmlRootElement
@@ -19,7 +19,7 @@ public class Estudiante extends PanacheEntityBase {
     public Integer id;
     public String nombre;
     public String apellido;
-    public LocalDateTime fechaNacimiento;
+    public LocalDate fechaNacimiento;
     public String provincia;
     public String genero;
 
