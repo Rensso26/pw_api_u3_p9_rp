@@ -25,6 +25,5 @@ public class Estudiante extends PanacheEntityBase {
 
     @OneToMany(mappedBy = "estudiante", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonIgnore
-
     public List<Hijo> hijos;
 }
